@@ -53,9 +53,9 @@ app.get("/proof", (req, res, next) => {
 
   // console.log(merkleTree.verify(proof, hashedAddress, root)) // true
   
-  var joinedstring = ("[" + proof.join(',') + "]");
+  // var joinedstring = ("[" + proof.join(',') + "]");
 
-  res.send(joinedstring);
+  res.send(proof);
 
   // return JSON.stringify(proof)
   // console.log(proof)
