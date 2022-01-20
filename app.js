@@ -40,12 +40,13 @@ app.get("/proof", (req, res, next) => {
 
 
   const leafNodes = whitelistAddresses.map(addr => keccak256(addr));
-  const merkleTree = new MerkleTree(leafNodes, keccak256)
+  const merkleTree = new MerkleTree(leafNodes, keccak256, { sortPairs: true });
   
   
   // const dummyaddress = "0x7a1F48E328697460A4ffa8BB2b4C878ece3F54Fb" // threep
   const hashedAddress = keccak256(address);
   const proof = merkleTree.getHexProof(hashedAddress);
+  
   const root = merkleTree.getRoot().toString('hex');
   
   console.log("root", root);
@@ -54,9 +55,9 @@ app.get("/proof", (req, res, next) => {
   
   var joinedstring = ("[" + proof.join(',') + "]");
 
-  res.json(joinedstring);
+  res.send(joinedstring);
 
-
+  // return JSON.stringify(proof)
   // console.log(proof)
 
  });
