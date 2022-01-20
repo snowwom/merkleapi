@@ -55,7 +55,7 @@ app.get("/proof", (req, res, next) => {
   
   // var joinedstring = ("[" + proof.join(',') + "]");
 
-  res.send(proof);
+  res.json(proof);
 
   // return JSON.stringify(proof)
   // console.log(proof)
